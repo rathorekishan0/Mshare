@@ -1,0 +1,19 @@
+{% include 'music/base.html' %}
+{% block content %}
+    <nav aria-label="Page navigation">
+    {% if page.has_other_pages %}
+        <ul class="paginator">
+            {% if page.has_previous %}
+                <li><a aria-label="Previous" href="?page={{ page.previous_page_number }}">&laquo;</a> </li>
+            {% else %}
+                <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+            {% for pages in page.paginator.page_range %}
+                {% if page.number==pages %}
+
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+    </nav>
+{% endblock %}

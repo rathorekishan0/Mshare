@@ -1,0 +1,4 @@
+<form method="post" action="{% url 'music:search' %}">{% csrf_token %}
+<input type="text" name="q" placeholder="search song name,artist or genre">
+    <input type="submit" name="submit" value="search">
+</form>

@@ -1,0 +1,13 @@
+{% include 'music/base.html' %}
+{% include 'music/navbar.html' %}
+
+<center><div class="panel panel-default" style="color: black;background-color: black">
+    <div class="panel-heading"  style="width: 40%;color: white;background-color: black"><h1>Upload Music</h1></div>
+  <div class="panel-body" style="background-color: black">
+      <form style="border: 1px solid #42DCA3; width: 40%;" method="post" enctype="multipart/form-data">
+        {%  csrf_token %}
+ {% include 'music/form-template.html' %}
+  <button type="submit" class="btn btn-block" style="background-color: black;color: #42DCA3;border-color: #42DCA3;">Submit</button>
+</form>
+  </div>
+</div></center>

@@ -1,0 +1,7 @@
+<div class="align-content-center">{% if request.user.is_authenticated %}
+<form method="post" action="{% url 'music:follow' %}">{% csrf_token %}
+    <input type="hidden" name="username" value="{{ username }}">
+    <button class="btn btn-primary" style="margin-left: 40%;color: #42DCA3;background-color: black;border-color: #42DCA3">{% if is_following %}unfollow{% else %}follow{% endif %}</button>
+</form>
+{% endif %}
+</div>

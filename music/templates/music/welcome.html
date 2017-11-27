@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Mshare</title>
+        {% load staticfiles %}
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
+        <style>
+             div.image {
+    position: relative;
+    }
+    div.imagetext{
+    position:absolute;
+    top:1px;
+        left: 10px;
+    width:100%;
+    }
+    .slick-next:before {
+        content: '';
+    }
+    .slick-prev:before {
+        content: '';
+    }
+    .slick-slide img {
+        width:100%;
+        height: 200px;
+    }
+    .slick-prev:hover, .slick-prev:focus {
+    color: transparent;
+    outline: none;
+     background: url({%static 'music/images/left-arrow.png' %}) no-repeat center center;
+    }
+    .thumbnail {
+        border:1px solid #42DCA3;
+    }
+     .slick-next:hover, .slick-next:focus {
+         color: transparent;
+         outline: none;
+         background: url({%static 'music/images/right-arrow.png' %}) no-repeat center center;
+     }
+            .slick-next {
+                background: url({%static 'music/images/right-arrow.png' %}) no-repeat center center;
+                background-size: 100% 100%;
+            }
+            .slick-prev {
+                background: url({%static 'music/images/left-arrow.png' %}) no-repeat center center;
+                background-size: 100% 100%;
+            }
+
+    #search_input {
+  width: 80%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 3px solid #42DCA;
+  margin-bottom: 12px;
+}
+#search_button{
+background-color: ##42DCA;
+}
+#search_button:hover{
+ background-color: #ff6600;
+
+}
+
+        </style>
+
+	</head>
+	<body style="background-color: black" >
+    {% include 'music/navbar.html' %}
+    <div class="container">
+        <h1 style="font-size: 50px; font-family: 'Times New Roman';color: white">Welcome To  Mshare</h1>
+        <p style="color: white">"It seems like your first time?!! Start looking for the millions of songs, artists available here"</p>
+        <form method="post" action="{% url 'music:search' %}">{% csrf_token %}
+            <input align="middle" type="text" id="search_input" onkeyup="myFunction()" placeholder="Search for artists,songs or genres " title="Type in a keyword" name="q">
+            <button class="btn btn-primary" style="hieght:50px;background-color:#42DCA3;color:black"><span >Search</span></button>
+        </form>
+    	<br>
+        <br>
+        {#{% for song in q %}#}
+        {# Each "contact" is a Contact model object. #}
+{#        <div class="song-display">#}
+{#            <div class="row">#}
+{#                {% for song in q %}#}
+{#                <div class="col-md-3 music">#}
+{#                    <div class="image">#}
+{#                        <a href="{% url 'music:profiledetail' song.slug %}" class="thumbnail">#}
+{#                        <img src="{{ song.userphoto.url }}" alt="{{ song.name }}" style="width:244.500px;height: 189.438px">#}
+{#                        </a>#}
+{##}
+{#                    </div>#}
+                    {#<a href="#"><img alt="" src="{{ song.songphoto.url }}" width="150px" height="150px"></a>#}
+{#                </div>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#            <span class="step-links">#}
+{#            {% if q.has_previous %}#}
+{#                <a href="?page={{ q.previous_page_number }}" id="prev"><img src="{% static 'music/images/left-arrow.png' %}" alt="prev"></a>#}
+{#                {% endif %}#}
+{#                {% if q.has_next %}#}
+{#                <a href="?page={{ q.next_page_number }}" id="next"><img src="{% static 'music/images/right-arrow.png' %}" alt="next"></a>#}
+{#                {% endif %}#}
+{#            </span>#}
+{#        </div>#}
+        <br>
+        <br>
+        {#{% for song in q %}#}
+        {# Each "contact" is a Contact model object. #}
+        <div class="container">
+    <h2 style="color:white ">Here are some Artists recommended for you </h2>
+    <div class="your-class">
+        {% for ar in person %}
+
+            <div class="image" ><div class="imagetext" style="position: absolute;top: 1px;color: whitesmoke;">
+                     <h3>
+                         <b>{{ ar.name }}</b>
+                     </h3>
+                            <h3><b><span class="fa fa-users"></span> {{ ar.followers.all.count }}</b></h3>
+                        </div>
+                <a href="{% url 'music:profiledetail' ar.slug %}" class="thumbnail"><img src="{{ ar.userphoto.url }}"> </a> </div>
+
+        {% endfor %}
+
+
+</div>
+        </div>
+    </div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+                <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('.your-class').slick({
+        accessibility: true,
+        arrows: true,
+        slidesToShow:4,
+          infinite:true,
+          autoplay:false,
+          autoplaySpeed:1000
+      });
+    });
+  </script>
+	</body>
+</html>

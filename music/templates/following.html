@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>MShare</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Mosaic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+ <!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<!-- Graph CSS -->
+<link href="css/font-awesome.css" rel="stylesheet"> 
+<!-- jQuery -->
+<!-- lined-icons -->
+<link rel="stylesheet" href="css/icon-font.css" type='text/css' />
+<style>
+div#page-wrapper{
+	padding: 1px;
+}
+.sticky-header .main-content{
+	padding: 1px;
+	margin-left: 1px;
+}
+.navbar-inverse{
+	margin-bottom: 1px;
+}
+
+
+
+/*list css*/
+
+#following_input {
+  background-image: url('/images/ searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 80%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 3px solid #08ef77;
+  margin-bottom: 12px;
+}
+
+body{
+  background-color: #000000; 
+  
+}
+* {margin: 0; padding: 0;}
+ 
+.list_container{
+  margin: 20px;
+}
+ 
+.following_list{
+  list-style-type: none;
+  width: 500px;
+}
+ 
+.following_h3 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+ 
+.following_image {
+  float: left;
+  margin: 0 15px 0 0;
+}
+ 
+.following_p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+ 
+.following_item{
+  padding: 10px;
+  overflow: auto;
+}
+ 
+.following_item:hover {
+  background: #eee;
+  cursor: pointer;
+}
+</style>
+<!-- //lined-icons -->
+ <!-- Meters graphs -->
+<script src="js/jquery-2.1.4.js"></script>
+
+
+</head> 
+    	 <!-- /w3layouts-agile -->
+ <body>
+      <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>                        
+                  </button>
+                  <span class="navbar-brand"> Mshare</span>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">My favourites</a></li>
+                  <li class="active"><a href="#">Followings</a></li>
+                  <li><a href="#">Followers</a></li>
+                  <li><a href="#">Playlist</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <li>
+                      <form class="navbar-form navbar-left">
+                          <div class="search">
+                              <div class="form-group">
+                                  <input type="text" class="form-control" placeholder="Search">
+                              </div>
+                              <button type="submit" class="btn btn-default" style="background-color:#222; color:#9d9d9d;border-style:none;padding:1px"><span class="glyphicon glyphicon-user"></span>People</button>
+                              <button type="submit" class="btn btn-default" style="background-color:#222; color:#9d9d9d;border-style:none;padding:1px"><span class="glyphicon glyphicon-music"></span>Songs</button>
+                          </div>
+                      </form>
+                  </li>
+                  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                  <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+              </ul>
+              </div>
+          </div>
+      </nav>
+      <br><br>
+      <h1 style="font-size: 30dp; color: #08ef77; text-align: center;" ><strong>FOLLOWING</strong></h1>
+      <br><br>
+      <<input align="middle" type="text" id="following_input" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">>
+      <div class="list_container">
+          <ul class="following_list" id="following_list">
+              <li class="following_item">
+                  <img class="following_image"  width="100dp" height="80dp" src="https://akphoto3.ask.fm/326/606/067/-259996965-1snnmhp-5rgst020khh5t50/original/avatar.jpg" />
+                  <h3 class="followingv_h3">Artist-Name (Artist_name)</h3>
+                  <p class="following_p">Subscriptions(no_of_subscriptions)</p>
+              </li>
+          </ul>
+      </div>
+      <script>
+        function myFunction() {
+          var input, filter, ul, li, a, i;
+          input = document.getElementById("following_input");
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("following_list");
+          li = ul.getElementsByTagName("li");
+          for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("h3")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+            } else {
+              li[i].style.display = "none";
+            }
+          }
+        }
+      </script>
+      <script src="js/jquery.nicescroll.js"></script>
+      <script src="js/scripts.js"></script>
+      <script src="js/bootstrap.js"></script>
+  </body>
+</html>

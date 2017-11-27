@@ -1,0 +1,11 @@
+{% extends 'music/base.html' %}
+{% block body %}
+    <h1>{{ albums.albumtitle }}</h1>
+    <h2>{{ albums.artist }}</h2>
+    {% for song in albums.song_set.all %}
+        {{ song.songtitle }}
+                {% if song.isfav %}
+                    <img src="http://i.imgur.com/b9b13Rd.png">
+                {% endif %}<br>
+    {% endfor %}
+{% endblock %}

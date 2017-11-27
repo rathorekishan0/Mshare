@@ -1,0 +1,237 @@
+{% include 'music/base.html' %}
+{% load staticfiles %}
+{% block content %}
+    {% include 'music/navbar.html' %}
+  <div class="container">
+    <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+    <div class="card" style="width:100%;border-style:groove;border-color: #42DCA3">
+      <img class="img-rounded" src="{{ object.userprofile.userphoto.url }}"  style="width:100%">
+      <div class="card-body">
+        <h4 class="card-title" style="text-align: center;color: #42DCA3">{{ object.userprofile.name }}</h4>
+        <p class="card-text" style="text-align: center;color: #42DCA3">Preferred Genre:{{ object.userprofile.prefferedgenre }}</p>
+          <p style="text-align: center;color: #42DCA3">Followers <span class="badge">{{object.userprofile.followers.all.count}}</span> </p>
+          <p style="text-align: center;color: #42DCA3">Following <span class="badge">{{object.is_following.all.count}}</span> </p>
+          <p>{% include 'music/snippet/follow-form.html' with username=user.username is_following=is_following %}</p>
+      </div>
+    </div></div></div>
+    <br>
+    <br>
+<div class="panel panel-default" style="background-color: black;border-color: #42DCA3">
+  <div class="panel-heading" style="background-color: black;border-color: #42DCA3">
+    <h3 class="panel-title" style="color: #42DCA3">Description</h3>
+  </div>
+  <div class="panel-body" style="color: white">
+    {{ object.userprofile.description }}
+  </div>
+</div>
+    <div class="panel panel-default"  style="background-color: black;border-color: #42DCA3">
+        <div class="panel-heading" style="background-color: black;border-color: #42DCA3">
+            <h3 class="panel-title" style="color: #42DCA3">Uploads <span style="margin-left: 89%"><small><a  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color: #42DCA3">
+  See more..</a> </small></span></h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+            <ul>
+                {% for song in firstfour %}
+                    <li class="listitem">
+                <div class="col-xs-6 col-md-3">
+                    <div class="image">
+                    <a href="{% url 'music:songplay' song.id %}" class="thumbnail">
+                        <img src="{{ song.songphoto.url }}" alt="{{ song.name }}" style="width:244.500px;height: 189.438px">
+                    </a>
+                        <div class="imagetext" style="position: absolute;top: 1px;color: whitesmoke;">
+                     <h3>
+                         <bold>{{ song.songname }}</bold>
+                     </h3>
+                        <h3><bold><span class="glyphicon glyphicon-heart"></span> {{ song.likes.all.count }}</bold></h3>
+                        </div>
+                    </div>
+                </div>
+                    </li>
+    {% endfor %}
+            </ul>
+            </div>
+        <div class="collapse" id="collapseExample">
+        <ul>
+            {% for song in user_songlist %}
+                <li class="listitem" >
+                <div class="col-xs-6 col-md-3">
+                    <div class="image">
+                    <a href="{% url 'music:songplay' song.id %}" class="thumbnail">
+                        <img src="{{ song.songphoto.url }}" alt="{{ song.name }}" style="width:244.500px;height: 189.438px">
+                    </a>
+                        <div class="imagetext" style="position: absolute;top: 1px;color: whitesmoke;">
+                     <h3>
+                         <bold>{{ song.songname }}</bold>
+                     </h3>
+                        <h3><bold><span class="glyphicon glyphicon-heart"></span> {{ song.likes.all.count }}</bold></h3>
+                        </div>
+                    </div>
+                </div>
+                </li>
+            {% endfor %}
+        </ul>
+        </div>
+
+        </div>
+    </div>
+    <div class="panel panel-default"  style="background-color: black;border-color: #42DCA3">
+        <div class="panel-heading" style="background-color: black;border-color: #42DCA3">
+            <h3 class="panel-title" style="color: #42DCA3">Liked Songs <span style="margin-left: 85%"><small><a style="color: #42DCA3" role="button" data-toggle="collapse" href="#like" aria-expanded="false" aria-controls="like">
+  See more..</a> </small></span></h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+            <ul>
+                {% for song in likefour %}
+                    <li class="listitem">
+                <div class="col-xs-6 col-md-3">
+                    <div class="image">
+                    <a href="{% url 'music:songplay' song.id %}" class="thumbnail">
+                        <img src="{{ song.songphoto.url }}" alt="{{ song.name }}" style="width:244.500px;height: 189.438px">
+                    </a>
+                        <div class="imagetext" style="position: absolute;top: 1px;color: whitesmoke;">
+                     <h3>
+                         <bold>{{ song.songname }}</bold>
+                     </h3>
+                        <h3><bold><span class="glyphicon glyphicon-heart"></span> {{ song.likes.all.count }}</bold></h3>
+                        </div>
+                    </div>
+                </div>
+                    </li>
+    {% endfor %}
+            </ul>
+            </div>
+        <div class="collapse" id="like">
+        <ul>
+            {% for song in qlike %}
+                <li class="listitem" >
+                <div class="col-xs-6 col-md-3">
+                    <div class="image">
+                    <a href="{% url 'music:songplay' song.id %}" class="thumbnail">
+                        <img src="{{ song.songphoto.url }}" alt="{{ song.name }}" style="width:244.500px;height: 189.438px">
+                    </a>
+                        <div class="imagetext" style="position: absolute;top: 1px;color: whitesmoke;">
+                     <h3>
+                         <bold>{{ song.songname }}</bold>
+                     </h3>
+                        <h3><bold><span class="glyphicon glyphicon-heart"></span> {{ song.likes.all.count }}</bold></h3>
+                        </div>
+                    </div>
+                </div>
+                </li>
+            {% endfor %}
+        </ul>
+        </div>
+
+        </div>
+    </div>
+     <div class="panel panel-default"  style="background-color: black;border-color: #42DCA3">
+        <div class="panel-heading" style="background-color: black;border-color: #42DCA3">
+            <h3 class="panel-title" style="color: #42DCA3">Followers <span style="margin-left: 87%"><small><a style="color: #42DCA3" role="button" data-toggle="collapse" href="#follower" aria-expanded="false" aria-controls="follower">
+  See more..</a> </small></span></h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+            <ul>
+                {% for person in followerfirst %}
+                    <li class="listitem">
+                <div class="col-xs-6 col-md-3">
+                    <div class="image">
+                    <a href="{% url 'music:profiledetail' person.userprofile.slug %}" class="thumbnail">
+                        <img src="{{ person.userprofile.userphoto.url }}" alt="{{ person.userprofile.name }}" style="width:244.500px;height: 189.438px">
+                    </a>
+                        <div class="imagetext" style="position: absolute;top: 1px;color: whitesmoke;">
+                     <h3>
+                         <bold>{{ person.userprofile.name }}</bold>
+                     </h3>
+                        </div>
+                    </div>
+                </div>
+                    </li>
+    {% endfor %}
+            </ul>
+            </div>
+        <div class="collapse" id="follow">
+        <ul>
+            {% for person in qfollowers %}
+                <li class="listitem" >
+                <div class="col-xs-6 col-md-3">
+                    <div class="image">
+                    <a href="{% url 'music:profiledetail' person.userprofile.slug %}" class="thumbnail">
+                        <img src="{{ person.userprofile.userphoto.url }}" alt="{{ person.userprofile.name }}" style="width:244.500px;height: 189.438px">
+                    </a>
+                        <div class="imagetext" style="position: absolute;top: 1px;color: whitesmoke;">
+                     <h3>
+                         <bold>{{ person.userprofile.name }}</bold>
+                     </h3>
+                        </div>
+                    </div>
+                </div>
+                </li>
+            {% endfor %}
+        </ul>
+        </div>
+
+        </div>
+    </div>
+    <div class="panel panel-default"  style="background-color: black;border-color: #42DCA3">
+        <div class="panel-heading" style="background-color: black;border-color: #42DCA3">
+            <h3 class="panel-title" style="color: #42DCA3">Followings <span style="margin-left: 87%"><small><a style="color: #42DCA3" role="button" data-toggle="collapse" href="#following" aria-expanded="false" aria-controls="following">
+            See more..</a> </small></span></h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+            <ul>
+                {% for person in qfirst %}
+                    <li class="listitem">
+                <div class="col-xs-6 col-md-3">
+                    <div class="image">
+                    <a href="{% url 'music:profiledetail' person.slug %}" class="thumbnail">
+                        <img src="{{ person.userphoto.url }}" alt="{{ person.name }}" style="width:244.500px;height: 189.438px">
+                    </a>
+                        <div class="imagetext" style="position: absolute;top: 1px;color: whitesmoke;">
+                     <h3>
+                         <bold>{{ person.name }}</bold>
+                     </h3>
+                        </div>
+                    </div>
+                </div>
+                    </li>
+    {% endfor %}
+            </ul>
+            </div>
+        <div class="collapse" id="following">
+        <ul>
+            {% for person in qfollowing %}
+                <li class="listitem" >
+                <div class="col-xs-6 col-md-3">
+
+                    <div class="image">
+                    <a href="{% url 'music:profiledetail' person.slug %}" class="thumbnail">
+                        <img src="{{ person.userphoto.url }}" alt="{{ person.name }}" style="width:244.500px;height: 189.438px">
+                    </a>
+                        <div class="imagetext" style="position: absolute;top: 1px;color: whitesmoke;">
+                     <h3>
+                         <bold>{{ person.name }}</bold>
+                     </h3>
+                        </div>
+                    </div>
+                </div>
+                </li>
+            {% endfor %}
+        </ul>
+        </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{#<h1>{{ object.userprofile.name }}</h1>#}
+{#<p>{% include 'music/snippet/follow-form.html' with username=user.username is_following=is_following %}</p>#}
+{#    {% for song in user_songlist %}#}
+{#        <p>{{ song.songname }}</p>#}
+{##}
+{#    {% endfor %}#}

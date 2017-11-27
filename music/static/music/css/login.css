@@ -1,0 +1,82 @@
+
+.btn-success
+   {
+      transition: 0.5s;
+   }
+
+   .btn-success:hover, .btn-success:focus
+   {
+      background: black;
+      border-color: #08ef77;
+      color: white;
+      transition: all 0.4s;
+   }
+
+   .btn-warning
+   {
+      transition: 0.5s;
+   }
+
+   .btn-warning:hover, .btn-warning:focus
+   {
+      background: black;
+      color: white;
+      border-color:#000000;
+   }
+
+   .panel.with-nav-tabs .nav-tabs
+   {
+      border-bottom: none; 
+   }
+   .panel.with-nav-tabs .nav-justified
+   {
+      margin-bottom: -4px;
+   }
+
+   .panel
+   {
+      margin: 7%;
+      padding: 0px;
+   }
+
+   .modal-header
+   {
+      background: #FF3838;
+      color: white;
+      text-align: center;
+   }
+
+   .input-group-addon
+   {
+      background-color: #5cb85c;
+
+      color: white;
+   }
+
+   .iga1
+   {
+      background-color: #f0ad4e;
+      color: white;
+   }
+
+   .iga2
+   {
+      background-color: #FF3838;
+      color: white;
+      }
+   .row
+   {
+      background-color: #101010;
+   }
+   .col-xs-12 
+   {
+      background-color: #08ef77;
+   }
+   .col-md-12
+   {
+      background-color: #08ef77;
+   }
+   .col-sm-12
+   {
+      background-color: #08ef77;
+   }

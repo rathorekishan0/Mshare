@@ -1,0 +1,6 @@
+{% if request.user.is_authenticated %}
+<form method="post" action="{% url 'music:like' %}" style="text-align: center">{% csrf_token %}
+    <input type="hidden" name="songid" value="{{ songid }}">
+    <button  style="background-color: #42DCA3;color: black;border: none">{% if request.user in song.likes.all %}unlike{% else %}like{% endif %}</button>
+</form>
+{% endif %}

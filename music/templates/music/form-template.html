@@ -1,0 +1,7 @@
+{% for field in form %}
+    <div class="form-group" style="border-style: groove;margin: 50px;border-color: #42DCA3">
+    <label style="color: white">{{ field.label_tag }} </label>
+    {{ field }}
+        <div style="color: white">{{ field.errors }}<br></div>
+    </div>
+{% endfor %}

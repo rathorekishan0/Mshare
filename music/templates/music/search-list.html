@@ -1,0 +1,108 @@
+
+
+{% include 'music/base.html' %}
+{% load staticfiles %}
+{% block content %}
+    {% include 'music/navbar.html' %}
+    {% if  qsong %}
+    <div class="panel panel-default"  style="background-color: black;border-color: #42DCA3">
+        <div class="panel-heading" style="background-color: black;border-color: #42DCA3">
+            <h3 class="panel-title" style="color: #42DCA3">Songs</h3>
+            <p style="color:white">{{ qsong.count }} Results found</p>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+            <ul>
+                {% for song in qsong %}
+                    <li class="listitem">
+                <div class="col-xs-6 col-md-3">
+                    <div class="image">
+                    <a href="{% url 'music:songplay' song.id %}" class="thumbnail">
+                        <img src="{{ song.songphoto.url }}" alt="{{ song.name }}" style="width:244.500px;height: 189.438px">
+                    </a>
+                        <div class="imagetext" style="position: absolute;top: 1px;color: whitesmoke;">
+                     <h3>
+                         <bold>{{ song.songname }}</bold>
+                     </h3>
+                        <h3><bold><span class="glyphicon glyphicon-heart"></span> {{ song.likes.all.count }}</bold></h3>
+                        </div>
+                    </div>
+                </div>
+                    </li>
+    {% endfor %}
+            </ul>
+            </div>
+
+
+        </div>
+    </div>
+    {% endif %}
+    {% if qname %}
+     <div class="panel panel-default"  style="background-color: black;border-color: #42DCA3">
+        <div class="panel-heading" style="background-color: black;border-color: #42DCA3">
+            <h3 class="panel-title" style="color: #42DCA3">Artist</h3>
+            <p style="color:white">{{ qname.count }} Results found</p>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+            <ul>
+                {% for person in qname %}
+                    <li class="listitem">
+                <div class="col-xs-6 col-md-3">
+                    <div class="image">
+                    <a href="{% url 'music:profiledetail' person.slug  %}" class="thumbnail">
+                        <img src="{{ person.userphoto.url }}" alt="{{ person.name }}" style="width:244.500px;height: 189.438px">
+                    </a>
+                        <div class="imagetext" style="position: absolute;top: 1px;color: whitesmoke;">
+                     <h3>
+                         <bold>{{ person.name }}</bold>
+                     </h3><h3><b><span class="fa fa-users"></span> {{ person.followers.all.count }}</b></h3>
+
+                        </div>
+                    </div>
+                </div>
+                    </li>
+    {% endfor %}
+            </ul>
+            </div>
+
+
+        </div>
+    </div>
+    {% endif %}
+{% if  qgenre %}
+    <div class="panel panel-default"  style="background-color: black;border-color: #42DCA3">
+        <div class="panel-heading" style="background-color: black;border-color: #42DCA3">
+            <h3 class="panel-title" style="color: #42DCA3">Songs</h3>
+            <p style="color:white">{{ qgenre.count }} Results found</p>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+            <ul>
+                {% for song in qgenre %}
+                    <li class="listitem">
+                <div class="col-xs-6 col-md-3">
+                    <div class="image">
+                    <a href="{% url 'music:songplay' song.pk %}" class="thumbnail">
+                        <img src="{{ song.songphoto.url }}" alt="{{ song.name }}" style="width:244.500px;height: 189.438px">
+                    </a>
+                        <div class="imagetext" style="position: absolute;top: 1px;color: whitesmoke;">
+                     <h3>
+                         <bold>{{ song.songname }}</bold>
+                     </h3>
+                        <h3><bold><span class="glyphicon glyphicon-heart"></span> {{ song.likes.all.count }}</bold></h3>
+                        </div>
+                    </div>
+                </div>
+                    </li>
+    {% endfor %}
+            </ul>
+            </div>
+
+
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}
+
